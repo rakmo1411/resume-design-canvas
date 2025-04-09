@@ -38,6 +38,36 @@
     --radius: 0.5rem;
   }
 
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+    
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%; 
+
+    --accent: 217 91% 60%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 224 76% 48%;
+  }
+
   * {
     @apply border-border;
   }
@@ -87,11 +117,11 @@
   }
   
   .btn-primary {
-    @apply btn bg-portfolio-primary text-white hover:bg-portfolio-dark;
+    @apply btn bg-portfolio-primary text-white hover:bg-portfolio-dark dark:bg-portfolio-accent dark:hover:bg-portfolio-accent/90;
   }
   
   .btn-outline {
-    @apply btn border border-portfolio-primary bg-transparent text-portfolio-primary hover:bg-portfolio-primary/10;
+    @apply btn border border-portfolio-primary bg-transparent text-portfolio-primary hover:bg-portfolio-primary/10 dark:border-portfolio-accent dark:text-portfolio-accent;
   }
   
   .card-hover {
@@ -99,6 +129,24 @@
   }
   
   .nav-link {
-    @apply px-2 py-1 text-base font-medium text-portfolio-primary hover:text-portfolio-accent transition-colors;
+    @apply px-2 py-1 text-base font-medium text-portfolio-primary hover:text-portfolio-accent transition-colors relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-portfolio-accent after:transition-all after:duration-300 hover:after:w-full dark:text-white/90 dark:hover:text-portfolio-accent;
+  }
+
+  .hover-scale {
+    @apply transition-transform duration-300 hover:scale-105;
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-md;
+  }
+
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-[0_0_15px_rgba(52,152,219,0.5)];
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-portfolio-accent to-blue-600 bg-clip-text text-transparent;
   }
 }

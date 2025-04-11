@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import { ArrowDownCircle } from 'lucide-react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
@@ -8,7 +8,7 @@ import HeroCube from './HeroCube';
 
 const Hero = () => {
   return (
-    <section id="hero" className="relative min-h-screen flex items-center pt-16 bg-gradient-to-b from-portfolio-secondary to-white dark:from-portfolio-dark dark:to-portfolio-primary overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center pt-16 bg-gradient-to-b from-portfolio-secondary/80 to-white/80 dark:from-portfolio-dark/90 dark:to-portfolio-primary/90 overflow-hidden">
       <ThreeDBackground />
       
       <div className="container relative z-10">
@@ -47,13 +47,16 @@ const Hero = () => {
             </div>
           </div>
           
-          <div className="md:w-1/2 h-[300px] mt-10 md:mt-0">
-            <Canvas>
-              <ambientLight intensity={0.5} />
-              <pointLight position={[10, 10, 10]} intensity={0.8} />
-              <HeroCube position={[0, 0, 0]} />
-              <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1} />
-            </Canvas>
+          <div className="md:w-1/2 h-[400px] mt-10 md:mt-0 bg-white/5 backdrop-blur-sm rounded-2xl shadow-xl dark:bg-black/10">
+            <Suspense fallback={<div className="w-full h-full flex items-center justify-center">Loading 3D Model...</div>}>
+              <Canvas shadows>
+                <ambientLight intensity={0.5} />
+                <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1.5} castShadow />
+                <pointLight position={[-10, -10, -10]} intensity={0.5} />
+                <HeroCube position={[0, 0, 0]} />
+                <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={2} />
+              </Canvas>
+            </Suspense>
           </div>
         </div>
       </div>

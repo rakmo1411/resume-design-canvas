@@ -1,4 +1,5 @@
 
+import React from 'react';
 import { Briefcase, Calendar, CheckCircle } from 'lucide-react';
 
 const Experience = () => {
@@ -12,7 +13,7 @@ const Experience = () => {
           <div className="bg-portfolio-secondary/30 dark:bg-portfolio-primary/10 rounded-lg p-6 shadow-sm">
             <div className="flex items-center space-x-2 mb-6">
               <Briefcase className="text-portfolio-accent" />
-              <h3 className="text-2xl font-semibold dark:text-white">Internship</h3>
+              <h3 className="text-2xl font-semibold text-portfolio-primary dark:text-white">Internship</h3>
             </div>
             
             <div className="border-l-2 border-portfolio-accent/50 pl-5 ml-1 pb-2">
@@ -52,7 +53,7 @@ const Experience = () => {
           <div className="bg-portfolio-secondary/30 dark:bg-portfolio-primary/10 rounded-lg p-6 shadow-sm">
             <div className="flex items-center space-x-2 mb-6">
               <Calendar className="text-portfolio-accent" />
-              <h3 className="text-2xl font-semibold dark:text-white">Extracurricular Activities</h3>
+              <h3 className="text-2xl font-semibold text-portfolio-primary dark:text-white">Extracurricular Activities</h3>
             </div>
             
             <ul className="space-y-4 text-gray-700 dark:text-gray-200">
